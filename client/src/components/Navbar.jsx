@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="container">
         <div className="logo">
           <Link to="/">
-          <img src={Logo} alt="" />
+            <img src={Logo} alt="" />
           </Link>
         </div>
         <div className="links">
@@ -35,7 +35,9 @@ const Navbar = () => {
           </Link>
           <span>{currentUser?.username}</span>
           {currentUser ? (
-            <span onClick={logout}>Logout</span>
+            <Link className="link" onClick={logout} to="/login">
+              Logout
+            </Link>
           ) : (
             <Link className="link" to="/login">
               Login

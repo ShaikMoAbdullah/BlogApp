@@ -7,12 +7,13 @@ import moment from "moment";
 
 const Write = () => {
   const state = useLocation().state;
+  console.log(state);
   const [value, setValue] = useState(state?.title || "");
   const [title, setTitle] = useState(state?.desc || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const upload = async () => {
     try {
@@ -32,19 +33,19 @@ const Write = () => {
     try {
       state
         ? await axios.put(`/posts/${state.id}`, {
-            title,
-            desc: value,
+            title: value,
+            desc: title,
             cat,
             img: file ? imgUrl : "",
           })
         : await axios.post(`/posts/`, {
-            title,
-            desc: value,
+            title: value,
+            desc: title,
             cat,
             img: file ? imgUrl : "",
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
           });
-          navigate("/")
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -56,14 +57,15 @@ const Write = () => {
         <input
           type="text"
           placeholder="Title"
-          onChange={(e) => setTitle(e.target.value)}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
         />
         <div className="editorContainer">
           <ReactQuill
             className="editor"
             theme="snow"
-            value={value}
-            onChange={setValue}
+            value={title}
+            onChange={setTitle}
           />
         </div>
       </div>

@@ -1,11 +1,11 @@
 $lightGreen: #b9e7e7;
 
 .app {
-  display: flex;
-  justify-content: center;
   .container {
-    width: 1024px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    // border: 1px solid;
     .link {
       text-decoration: none;
       color: inherit;
@@ -65,8 +65,9 @@ $lightGreen: #b9e7e7;
 
     .navbar {
       .container {
-        padding: 10px 0px;
+        padding: 0.25rem 4rem;
         display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         .logo {
@@ -77,7 +78,7 @@ $lightGreen: #b9e7e7;
         .links {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 1rem;
 
           h6 {
             font-size: 16px;
@@ -112,7 +113,7 @@ $lightGreen: #b9e7e7;
     //FOOTER
 
     footer {
-      margin-top: 100px;
+      margin-top: 5rem;
       padding: 20px;
       background-color: $lightGreen;
       display: flex;
@@ -128,7 +129,7 @@ $lightGreen: #b9e7e7;
 
     .home {
       .posts {
-        margin-top: 50px;
+        padding: 0 10rem;
         display: flex;
         flex-direction: column;
         gap: 150px;
@@ -136,6 +137,7 @@ $lightGreen: #b9e7e7;
         .post {
           display: flex;
           gap: 100px;
+          height: 30rem;
 
           &:nth-child(2n + 1) {
             flex-direction: row-reverse;
@@ -168,6 +170,7 @@ $lightGreen: #b9e7e7;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            gap: 0.6rem;
 
             h1 {
               font-size: 48px;
@@ -177,7 +180,7 @@ $lightGreen: #b9e7e7;
               font-size: 18px;
             }
 
-            button {
+            .button {
               width: max-content;
               padding: 10px 20px;
               border: none;
@@ -185,6 +188,8 @@ $lightGreen: #b9e7e7;
               background-color: white;
               border: 1px solid teal;
               color: teal;
+              text-decoration: none;
+              color: inherit;
 
               &:hover {
                 border: 1px solid white;
@@ -202,6 +207,7 @@ $lightGreen: #b9e7e7;
     .single {
       display: flex;
       gap: 50px;
+      padding: 0 10rem;
 
       .content {
         flex: 5;
@@ -301,9 +307,9 @@ $lightGreen: #b9e7e7;
     //WRITE
 
     .add {
-      margin-top: 20px;
       display: flex;
       gap: 20px;
+      padding: 0 10rem;
 
       .content {
         flex: 5;
@@ -317,7 +323,7 @@ $lightGreen: #b9e7e7;
         }
 
         .editorContainer {
-          height: 300px;
+          height: 25rem;
           overflow: scroll;
           border: 1px solid lightgray;
 
@@ -337,34 +343,34 @@ $lightGreen: #b9e7e7;
         .item {
           border: 1px solid lightgray;
           padding: 10px;
-          flex:1;
+          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           font-size: 12px;
           color: #555;
 
-          h1{
+          h1 {
             font-size: 20px;
           }
 
-          .file{
+          .file {
             text-decoration: underline;
             cursor: pointer;
           }
 
-          .buttons{
+          .buttons {
             display: flex;
             justify-content: space-between;
 
-            :first-child{
+            :first-child {
               cursor: pointer;
               color: teal;
               background-color: white;
               border: 1px solid teal;
               padding: 3px 5px;
             }
-            :last-child{
+            :last-child {
               cursor: pointer;
               color: white;
               background-color: teal;
@@ -373,10 +379,10 @@ $lightGreen: #b9e7e7;
             }
           }
 
-          .cat{
+          .cat {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 0.25rem;
             color: teal;
           }
         }
