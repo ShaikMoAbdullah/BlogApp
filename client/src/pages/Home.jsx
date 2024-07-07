@@ -13,7 +13,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts${cat}`);
+        const res = await axios.get(
+          `https://blogapp-r2c7.onrender.com/api/posts${cat}`
+        );
         setPosts(res.data);
       } catch (err) {
         console.log(err);

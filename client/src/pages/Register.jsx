@@ -21,7 +21,10 @@ const Register = () => {
     e.preventDefault();
     try {
       if (inputs?.username && inputs?.password && inputs?.email) {
-        await axios.post("/auth/register", inputs);
+        await axios.post(
+          "https://blogapp-r2c7.onrender.com/api/auth/register",
+          inputs
+        );
         navigate("/login");
       }
     } catch (err) {

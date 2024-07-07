@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const Menu = ({cat}) => {
+const Menu = ({ cat }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/?cat=${cat}`);
+        const res = await axios.get(
+          `https://blogapp-r2c7.onrender.com/api/posts/?cat=${cat}`
+        );
         setPosts(res.data);
       } catch (err) {
         console.log(err);

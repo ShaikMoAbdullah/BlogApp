@@ -40,6 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://blogapp-r2c7.onrender.com/api/"
+  }
 }
