@@ -14,11 +14,15 @@ export const AuthContexProvider = ({ children }) => {
       inputs
     );
     setCurrentUser(res.data);
+    document.cookie = `accessToken=${res.data.accessToken}; path=/; max-age=${
+      7 * 24 * 60 * 60
+    }`;
   };
 
   const logout = async (inputs) => {
     await axios.post("https://blogapp-r2c7.onrender.com/api/auth/logout");
     setCurrentUser(null);
+    document.cookie = "accessToken=; path=/; max-age=0";
   };
 
   useEffect(() => {
