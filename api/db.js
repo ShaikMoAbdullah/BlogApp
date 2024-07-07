@@ -1,10 +1,9 @@
 import mysql from "mysql";
 
 export const db = mysql.createConnection({
-  host: "192.168.1.9",
-  user: "root",
+  host: "blog-smabdullahblr-a807.h.aivencloud.com",
+  user: "avnadmin",
   password: process.env.DB_PASSWORD,
-  database: "blog",
+  database: "defaultdb",
+  port: "11821",
 });
-
-console.log(process.env);
