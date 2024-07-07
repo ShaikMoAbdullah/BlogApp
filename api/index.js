@@ -6,7 +6,9 @@ import cookieParser from "cookie-parser";
 import multer from "multer";
 
 const app = express();
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 const storage = multer.diskStorage({
