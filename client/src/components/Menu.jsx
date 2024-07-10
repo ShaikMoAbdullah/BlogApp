@@ -8,7 +8,7 @@ const Menu = ({ cat }) => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `https://blogapp-r2c7.onrender.com/api/posts/?cat=${cat}`
+          `https://blogapp-r2c7.onrender.com/api/posts?cat=${cat}`
         );
         setPosts(res.data);
       } catch (err) {

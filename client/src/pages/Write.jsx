@@ -43,7 +43,7 @@ const Write = () => {
               img: file ? imgUrl : "",
             }
           )
-        : await axios.post(`https://blogapp-r2c7.onrender.com/api/posts/`, {
+        : await axios.post(`https://blogapp-r2c7.onrender.com/api/posts`, {
             title: value,
             desc: title,
             cat,
