@@ -12,7 +12,24 @@ export const getPosts = (req, res) => {
 
 // Function to get a single post by id
 export const getPost = (req, res) => {
-  const q = "SELECT * FROM posts WHERE id = ?";
+  const q = `SELECT 
+    p.id, 
+    p.title, 
+    p.desc, 
+    p.img, 
+    p.date, 
+    p.uid, 
+    p.cat, 
+    u.username
+    FROM 
+        posts p
+    JOIN 
+        users u
+    ON 
+        p.uid = u.id
+    WHERE 
+        p.id = ?;
+`;
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
     if (data.length === 0) return res.status(404).json("Post not found!");
@@ -53,6 +70,7 @@ export const deletePost = (req, res) => {
 
 // Function to update a post by id
 export const updatePost = (req, res) => {
+  console.log(req.body);
   const q =
     "UPDATE posts SET `title`=?, `desc`=?, `img`=?, `cat`=?, `date`=? WHERE id = ?";
   const values = [

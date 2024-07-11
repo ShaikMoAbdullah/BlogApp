@@ -41,6 +41,7 @@ const Write = () => {
               desc: title,
               cat,
               img: file ? imgUrl : "",
+              date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
             }
           )
         : await axios.post(
