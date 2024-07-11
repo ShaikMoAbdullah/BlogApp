@@ -21,6 +21,7 @@ export const getPost = (req, res) => {
 };
 
 export const addPost = (req, res) => {
+  const user = JSON.parse(req.headers.user);
   const q =
     "INSERT INTO posts(`title`, `desc`, `img`, `cat`, `date`, `uid`) VALUES (?, ?, ?, ?, ?, ?)";
   const values = [
@@ -29,7 +30,7 @@ export const addPost = (req, res) => {
     req?.body?.img,
     req?.body?.cat,
     req?.body?.date,
-    req.session?.user?.id,
+    user?.id,
   ];
 
   db.query(q, values, (err, data) => {

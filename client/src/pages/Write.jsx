@@ -43,13 +43,21 @@ const Write = () => {
               img: file ? imgUrl : "",
             }
           )
-        : await axios.post(`https://blogapp-r2c7.onrender.com/api/posts`, {
-            title: value,
-            desc: title,
-            cat,
-            img: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
+        : await axios.post(
+            `https://blogapp-r2c7.onrender.com/api/posts`,
+            {
+              title: value,
+              desc: title,
+              cat,
+              img: file ? imgUrl : "",
+              date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            },
+            {
+              headers: {
+                user: localStorage.getItem("user"),
+              },
+            }
+          );
       navigate("/");
     } catch (err) {
       console.log(err);
