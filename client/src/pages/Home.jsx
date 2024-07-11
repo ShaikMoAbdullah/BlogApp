@@ -4,21 +4,26 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import NoData from "../components/NoData";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const cat = useLocation().search;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoader(true);
         const res = await axios.get(
           `https://blogapp-r2c7.onrender.com/api/posts${cat}`
         );
         setPosts(res.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoader(false);
       }
     };
     fetchData();
@@ -32,7 +37,9 @@ const Home = () => {
   return (
     <div className="home">
       <div className="posts">
-        {posts.length > 0 ? (
+        {loader ? (
+          <Loader />
+        ) : posts.length > 0 ? (
           posts.map((post) => (
             <div className="post" key={post.id}>
               <div className="img">
