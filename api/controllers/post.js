@@ -74,7 +74,6 @@ export const deletePost = (req, res) => {
 
 // Function to update a post by id
 export const updatePost = (req, res) => {
-  console.log(req.body);
   const q =
     "UPDATE posts SET `title`=?, `desc`=?, `img`=?, `cat`=?, `date`=? WHERE id = ?";
   const values = [
