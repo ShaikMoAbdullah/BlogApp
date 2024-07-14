@@ -4,6 +4,9 @@ import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
+import { storage } from "../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 const Write = () => {
   const state = useLocation().state;
@@ -16,13 +19,11 @@ const Write = () => {
 
   const upload = async () => {
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await axios.post(
-        "https://blogapp-r2c7.onrender.com/api/upload",
-        formData
-      );
-      return res.data;
+      const imageRef = ref(storage, `images/${file.name + v4()}`);
+      const url = uploadBytes(imageRef, file).then((snapshot) => {
+        return getDownloadURL(snapshot.ref).then((url) => url);
+      });
+      return url;
     } catch (err) {
       console.log(err);
     }
